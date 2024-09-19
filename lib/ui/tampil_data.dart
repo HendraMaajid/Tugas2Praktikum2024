@@ -16,7 +16,10 @@ class TampilData extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Perkenalan", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text(
+            "Perkenalan",
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+        centerTitle: true,
         backgroundColor: Colors.blue,
       ),
       body: Container(

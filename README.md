@@ -10,17 +10,15 @@ Shift Baru: F
 
 # Penjelasan Proses Passing Data dari Form ke Tampilan
 
-Aplikasi ini terdiri dari dua bagian utama: `FormData` untuk mengumpulkan input pengguna, dan `TampilData` untuk menampilkan data yang diinput. Berikut adalah penjelasan tentang bagaimana data dilewatkan dari form ke tampilan.
-
 ## Komponen Utama
 
 1. **FormData** (`form_data.dart`)
     - Widget yang menangani input pengguna
-    - Menggunakan `TextFormField` untuk mengumpulkan nama, NIM, dan tahun lahir
+    - Menggunakan `TextFormField` untuk mendapatkan inputan nama, NIM, dan tahun lahir
 
 2. **TampilData** (`tampil_data.dart`)
     - Widget yang menampilkan data yang telah diinput
-    - Menerima data sebagai parameter konstruktor
+    - Menerima data dari FormData sebagai parameter konstruktor
 
 ## Proses Passing Data
 
@@ -28,26 +26,26 @@ Aplikasi ini terdiri dari dua bagian utama: `FormData` untuk mengumpulkan input 
     - Data diinput oleh pengguna melalui `TextFormField`
     - Data disimpan dalam `TextEditingController`:
       ```dart
-      final _namaController = TextEditingController();
-      final _nimController = TextEditingController();
-      final _tahunController = TextEditingController();
+      final _namaController = TextEditingController(); //menyimpan input nama di controller
+      final _nimController = TextEditingController(); //menyimpan input nim di controller
+      final _tahunController = TextEditingController(); //menyimpan input tahun di controller
       ```
 
 2. **Validasi Data**
-    - Saat tombol "Simpan" ditekan, method `_submitForm()` dipanggil
+    - Saat tombol "Simpan" ditekan, maka method `_submitForm()` dipanggil
     - Form divalidasi menggunakan `_formKey.currentState!.validate()`
 
 3. **Persiapan Data untuk Passing**
-    - Jika validasi berhasil, data diekstrak dari controller:
+    - Jika validasi berhasil, data diambil dari controller melalui:
       ```dart
-      String nama = _namaController.text;
+      String nama = _namaController.text; 
       String nim = _nimController.text;
       int tahun = int.parse(_tahunController.text);
       ```
 
 4. **Navigasi dan Passing Data**
     - Menggunakan `Navigator.push()` untuk berpindah ke `TampilData`
-    - Data dilewatkan sebagai argumen konstruktor:
+    - Data dilempar sebagai parameter konstruktor:
       ```dart
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => TampilData(nama: nama, nim: nim, tahun: tahun),
@@ -66,7 +64,7 @@ Aplikasi ini terdiri dari dua bagian utama: `FormData` untuk mengumpulkan input 
       ```
 
 6. **Penggunaan Data di TampilData**
-    - Data yang diterima digunakan untuk membangun UI:
+    - Data yang diterima digunakan untuk menampilkan hasil dari inputan pengguna:
       ```dart
       Text(
         nama,
@@ -82,7 +80,6 @@ Aplikasi ini terdiri dari dua bagian utama: `FormData` untuk mengumpulkan input 
       ),
       ```
 
-Dengan proses ini, data yang diinput oleh pengguna di `FormData` berhasil dilewatkan dan ditampilkan di `TampilData`.
 ## Screenshot
 Contoh :
 ![Lampiran Form](form.png)
