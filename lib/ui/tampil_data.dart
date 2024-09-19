@@ -14,17 +14,55 @@ class TampilData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final int umur = DateTime.now().year - tahun;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Perkenalan"),
+        title: const Text("Perkenalan", style: TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.blue,
       ),
       body: Container(
-        margin: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Text("Nama saya $nama, NIM $nim, dan umur saya adalah $umur tahun"),
-          ],
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.blue[50]!, Colors.blue[100]!],
+          ),
+        ),
+        child: Center(
+          child: Card(
+            margin: const EdgeInsets.all(20),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.blue,
+                    child: Text(
+                      nama[0].toUpperCase(),
+                      style: const TextStyle(fontSize: 40, color: Colors.white),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    nama,
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    "NIM: $nim",
+                    style: const TextStyle(fontSize: 18, color: Colors.grey),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    "Lahir Tahun: $tahun",
+                    style: const TextStyle(fontSize: 18, color: Colors.grey),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

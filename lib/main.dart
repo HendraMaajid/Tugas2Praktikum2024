@@ -1,5 +1,6 @@
 import 'ui/form_data.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +11,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: "Aplikasi Flutter Pertama",
-      home: FormData(),
+    return MaterialApp(
+      title: "Aplikasi Flutter Hendra",
+        theme: ThemeData(
+          textTheme: GoogleFonts.poppinsTextTheme(),
+        ),
+      home: const FormData(),
     );
   }
 }
