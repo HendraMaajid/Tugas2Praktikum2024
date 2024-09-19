@@ -38,9 +38,9 @@ Shift Baru: F
 3. **Persiapan Data untuk Passing**
     - Jika validasi berhasil, data diambil dari controller melalui:
       ```dart
-      String nama = _namaController.text; 
-      String nim = _nimController.text;
-      int tahun = int.parse(_tahunController.text);
+      String nama = _namaController.text; //mengambil data nama
+      String nim = _nimController.text; //mengambil data nim
+      int tahun = int.parse(_tahunController.text); //mengambil data tahun
       ```
 
 4. **Navigasi dan Passing Data**
@@ -66,6 +66,7 @@ Shift Baru: F
 6. **Penggunaan Data di TampilData**
     - Data yang diterima digunakan untuk menampilkan hasil dari inputan pengguna:
       ```dart
+      final int umur = DateTime.now().year - tahun; // data tahun digunakan untuk menghitung umur
       Text(
         nama,
         style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -75,12 +76,11 @@ Shift Baru: F
         style: const TextStyle(fontSize: 18, color: Colors.grey),
       ),
       Text(
-        "Lahir Tahun: $tahun",
+        "Umur: $umur tahun",
         style: const TextStyle(fontSize: 18, color: Colors.grey),
       ),
       ```
 
 ## Screenshot
-Contoh :
 ![Lampiran Form](form.png)
 ![Lampiran Hasil](hasil.png)

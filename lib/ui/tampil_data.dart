@@ -14,6 +14,7 @@ class TampilData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int umur = DateTime.now().year - tahun;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -59,7 +60,7 @@ class TampilData extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    "Lahir Tahun: $tahun",
+                    "Umur: $umur tahun",
                     style: const TextStyle(fontSize: 18, color: Colors.grey),
                   ),
                 ],
